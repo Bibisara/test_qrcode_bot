@@ -22,18 +22,9 @@
             Telegram.WebApp.showScanQrPopup({
                 text: 'with any link'
             }, function(text) {
-                const lowerText = text.toString().toLowerCase();
-                if (lowerText.substring(0, 7) === 'http://' || lowerText.substring(0, 8) === 'https://') {
-                    setTimeout(function() {
-                        Telegram.WebApp.openLink(text);
-                    }, 50);
-
-                    return true;
-                } else {
-                    // Show alert if the scanned content is not a link
-                    Telegram.WebApp.showAlert(text);
-                    return true;
-                }
+                // Show alert if the scanned content is not a link
+                Telegram.WebApp.showAlert(text);
+                return true;
             });
         }
     </script>
