@@ -20,11 +20,11 @@ function scanQrCode(button) {
         // For this example, we assume the QR code contains the order ID
         if button == "order" {
             showOrderInfo(qrCode);
+            Telegram.WebApp.showAlert(text);
+            return true;
         } else {
             selectProduct(qrCode);
         }
-        Telegram.WebApp.showAlert(text);
-        return true;
     });
 }
 
@@ -45,5 +45,5 @@ function showOrderInfo(orderId) {
 
 function selectProduct(productId) {
     document.getElementById("product_selected").innerText = "Selected Product: " + productId;
+    return true;
 }
-
