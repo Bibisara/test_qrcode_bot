@@ -15,10 +15,10 @@
 //}
 
 function scanQrCode(button) {
-    Telegram.WebApp.showScanQrPopup({qrCode: 'with any link'}, function (qrCode) {
+    Telegram.WebApp.showScanQrPopup({text: 'with any link'}, function (qrCode) {
         // Process the scanned QR code for order
         // For this example, we assume the QR code contains the order ID
-        if button == "order" {
+        if (button == "order") {
             showOrderInfo(qrCode);
         } else {
             selectProduct(qrCode);
