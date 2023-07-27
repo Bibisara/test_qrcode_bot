@@ -14,23 +14,26 @@
 //    });
 //}
 
-function scanOrderQrCode() {
+function scanQrCode(button) {
     Telegram.WebApp.showScanQrPopup({qrCode: 'with any link'}, function (qrCode) {
         // Process the scanned QR code for order
         // For this example, we assume the QR code contains the order ID
-        showOrderInfo(qrCode);
+        if button == "order" {
+            showOrderInfo(qrCode);
+        } else {
+            selectProduct(qrCode);
+        }
         Telegram.WebApp.showAlert(text);
         return true;
     });
 }
 
-function scanProductQrCode() {
-    Telegram.WebApp.showScanQrPopup({qrCode: 'with any value'}, function (qrCode) {
-        // Process the scanned QR code for product
-        // For this example, we assume the QR code contains the product ID
-        selectProduct(qrCode);
-    });
-}
+//function scanProductQrCode() {
+//    Telegram.WebApp.showScanQrPopup({}, function (qrCode) {
+//        // Process the scanned QR code for product
+//        // For this example, we assume the QR code contains the product ID
+//    });
+//}
 
 function showOrderInfo(orderId) {
     document.getElementById("main_btn").style.display = "none";
