@@ -20,7 +20,7 @@ function scanOrderQrCode() {
         // For this example, we assume the QR code contains the order ID
         showOrderInfo(qrCode);
         Telegram.WebApp.showAlert(qrCode);
-        return true;
+//        return true;
     });
 }
 
