@@ -20,6 +20,7 @@ function scanOrderQrCode() {
         // For this example, we assume the QR code contains the order ID
         showOrderInfo(qrCode);
         Telegram.WebApp.showAlert(qrCode);
+        return true;
     });
 }
 
@@ -36,6 +37,7 @@ function showOrderInfo(orderId) {
     document.getElementById("product_btn").style.display = "block";
     document.getElementById("order_info").classList.remove("hidden");
     document.getElementById("order_id").innerText = "Order ID: " + orderId;
+    return true;
 }
 
 function selectProduct(productId) {
