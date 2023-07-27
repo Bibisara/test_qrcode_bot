@@ -15,7 +15,7 @@
 //}
 
 function scanOrderQrCode() {
-    Telegram.WebApp.showScanQrPopup({}, function (qrCode) {
+    Telegram.WebApp.showScanQrPopup({qrCode: 'with any link'}, function (qrCode) {
         // Process the scanned QR code for order
         // For this example, we assume the QR code contains the order ID
         showOrderInfo(qrCode);
