@@ -29,6 +29,8 @@ function scanProductQrCode() {
         // Process the scanned QR code for product
         // For this example, we assume the QR code contains the product ID
         selectProduct(qrCode);
+//        Telegram.WebApp.showAlert(qrCode);
+        return true;
     });
 }
 
