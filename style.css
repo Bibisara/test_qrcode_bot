@@ -1,3 +1,4 @@
+/*
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,7 +6,7 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Adjust the style for the top section */
+ Adjust the style for the top section
 #top_sect {
     display: flex;
     justify-content: center;
@@ -14,7 +15,7 @@ body {
     background-color: #2a5caa;
 }
 
-/* Style for the "Scan QR" button */
+Style for the "Scan QR" button
 #main_btn {
     padding: 10px 20px;
     font-size: 16px;
@@ -28,4 +29,60 @@ body {
 
 #main_btn:hover {
     background-color: #ddd;
+}
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+#top_sect {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+#product_list {
+    text-align: center;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+#order_info {
+    text-align: center;
+    margin-top: 20px;
+    background-color: #f0f0f0;
+    padding: 20px;
 }

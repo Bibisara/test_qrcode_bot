@@ -1,3 +1,29 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<!--    <meta name="format-detection" content="telephone=no" />-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+<!--    <meta name="MobileOptimized" content="176" />-->
+<!--    <meta name="HandheldFriendly" content="True" />-->
+<!--    <meta name="robots" content="noindex,nofollow" />-->
+<!--    <title>QR Code Scanner</title>-->
+<!--    <script src="https://telegram.org/js/telegram-web-app.js?1"></script>-->
+<!--    <script src="script.js"></script>-->
+<!--    <link rel="stylesheet" href="style.css">-->
+<!--</head>-->
+
+<!--<body class="" style="">-->
+
+<!--<section id="top_sect" class="second">-->
+<!--    <button id="main_btn" onclick="scanQrCode();">Scan QR</button>-->
+<!--</section>-->
+
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,31 +37,33 @@
     <meta name="robots" content="noindex,nofollow" />
     <title>QR Code Scanner</title>
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
-    <script>
-        function setThemeClass() {
-            document.documentElement.className = Telegram.WebApp.colorScheme;
-        }
-        Telegram.WebApp.onEvent('themeChanged', setThemeClass);
-        setThemeClass();
-
-        function scanQrCode() {
-            Telegram.WebApp.showScanQrPopup({
-                text: 'with any link'
-            }, function(text) {
-                // Show alert if the scanned content is not a link
-                Telegram.WebApp.showAlert(text);
-                return true;
-            });
-        }
-    </script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="" style="">
 
 <section id="top_sect" class="second">
-    <button id="main_btn" onclick="scanQrCode();">Scan QR</button>
+    <button id="main_btn" onclick="scanOrderQrCode();">Scan QR of Order</button>
+    <button id="product_btn" onclick="scanProductQrCode();" style="display: none;">Scan QR of Product</button>
 </section>
+
+<div id="product_list" class="hidden">
+    <h2>Select a Product:</h2>
+    <ul>
+        <li><button onclick="selectProduct('product1');">Product 1</button></li>
+        <li><button onclick="selectProduct('product2');">Product 2</button></li>
+        <li><button onclick="selectProduct('product3');">Product 3</button></li>
+        <!-- Add more products as needed -->
+    </ul>
+</div>
+
+<div id="order_info" class="hidden">
+    <h2>Order Information:</h2>
+    <p id="order_id"></p>
+    <p id="product_selected"></p>
+</div>
 
 </body>
 </html>
+
