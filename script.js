@@ -123,7 +123,7 @@ function scanQrCode(button) {
                 console.error('Error:', error);
             });
         }
-//        Telegram.WebApp.showAlert(qrCode);
+        Telegram.WebApp.showAlert(qrCode);
         return true;
     });
 }
