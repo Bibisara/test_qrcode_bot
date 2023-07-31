@@ -16,15 +16,8 @@ const DemoApp = {
         },
 
         scanQrCode(button) {
-            if (!DemoApp.initDataUnsafe.query_id) {
-                alert('WebViewQueryId not defined');
-                return;
-            }
 
             document.querySelectorAll('button').forEach((btn) => btn.disabled = true);
-
-            const btn = document.querySelector('#btn_status');
-            btn.textContent = 'Sending...';
 
             Telegram.WebApp.showScanQrPopup({text: 'with any link'}, function (qrCode) {
                 // Process the scanned QR code for order
@@ -111,44 +104,3 @@ function mainToProductBtn() {
     document.getElementById("main_btn").style.display = "none";
     document.getElementById("product_btn").style.display = "block";
 }
-
-postData = {
-                        "order_id": orderId,
-                        "product_id": qrCode,
-                        "product_name": productName,
-                        "date_of_arrival": 5545.322,
-                        "temporary_location": "AAA4512"
-                    };
-                    fetch(apiUrl + "/reports/arrival_date", {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiY29udHJvbGxlciIsImV4cGlyZXMiOjIzMjExNzc0ODIuMjI2MzAwMn0.X4VA_ST28ETT9KF6KMPEsnpdqDWlT8yUwNaQbcvi4-0'
-                        },
-                        body: JSON.stringify(postData)
-                    })
-                    .then(response => {
-                        // Check if the request was successful
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        // Parse the response data as JSON
-                        return response.json();
-                    })
-                    .then(data => {
-                        // Process the data returned from the server
-                        console.log(data);
-                        // Disable only the selected product button
-                        const productButtons = document.getElementById('product_list').getElementsByTagName('button');
-                        for (let i = 0; i < productButtons.length; i++) {
-                            const button = productButtons[i];
-                            if (button.textContent === productName) {
-                                button.disabled = true;
-                                button.style.backgroundColor = 'gray'
-                            }
-                        }
-                    })
-                    .catch(error => {
-                        // Handle any errors that occurred during the fetch
-                        console.error('Error:', error);
-                    });
