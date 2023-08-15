@@ -1,7 +1,6 @@
-import requests
 
-bot_token = "6504257620:AAH4_RxmRPAWuIlQlpwwFirf6IziGssdKGQ"
-url = f"https://api.telegram.org/bot{bot_token}/getUpdates"
+const botToken = "6504257620:AAH4_RxmRPAWuIlQlpwwFirf6IziGssdKGQ";
+const apiUrl = "https://api.telegram.org/bot" + botToken + "/getUpdates";
 
 
 const DemoApp = {
@@ -25,19 +24,24 @@ const DemoApp = {
 
             document.querySelectorAll('button').forEach((btn) => btn.disabled = true);
 
-            response = requests.get(url)
-            data = response.json()
-
-            if data.get("ok"):
-                updates = data.get("result", [])
-
-                if updates:
-                    chatId = updates[-1].chat.id
-                    print("Newest update:", chatId)
-                else:
-                    print("No updates received.")
-            else:
-                print("Request failed:", data.get("description"))
+            fetch(apiUrl)
+              .then(response => response.json())
+              .then(data => {
+                if (data.ok) {
+                  const updates = data.result;
+                  if (updates.length > 0) {
+                    const chatId = updates[updates.length - 1].chat.id;
+                    console.log("Newest update:", chatId);
+                  } else {
+                    console.log("No updates received.");
+                  }
+                } else {
+                  console.log("Request failed:", data.description);
+                }
+              })
+              .catch(error => {
+                console.error("Error:", error);
+              });
 
             Telegram.WebApp.showScanQrPopup({text: 'with any link'}, function (qrCode) {
                 // Process the scanned QR code for order
@@ -45,7 +49,7 @@ const DemoApp = {
                 Telegram.WebApp.sendMessage({
                   chat_id: chatId,
                   text: qrCode,
-                  token: bot_token,
+                  token: botToken,
                 });
 
                 DemoApp.close();
@@ -53,3 +57,5 @@ const DemoApp = {
             });
         }
 }
+
+DemoApp.init();
